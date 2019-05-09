@@ -1,0 +1,8 @@
+[package]
+name = "protobuf-exploration"
+version = "0.1.0"
+authors = ["Rafael Rubem Rossi Souza Guerreiro <guerreiro.dev@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+"protobuf" = "2.5"
