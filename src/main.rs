@@ -16,17 +16,13 @@ fn main() {
         uuid.set_v2(9876549876543);
 
         let mut north = Request::new();
-        north.set_id(123123);
-        north.set_session(uuid.clone());
-        north.set_character(uuid.clone());
-        let mut movement = MovementRequest::new();
-        movement.set_direction(Direction::North);
-        north.set_movement(movement);
+        north.set_Id(123123);
+        north.set_Session(uuid.clone());
+        north.set_Character(uuid.clone());
+        north.set_Movement(Direction::North);
 
         let mut south = north.clone();
-        let mut facing = FacingRequest::new();
-        facing.set_direction(Direction::South);
-        south.set_facing(facing);
+        south.set_Facing(Direction::South);
 
         let mut buffer1 = vec![0u8; 0];
         let mut buffer2 = vec![0u8; 0];
@@ -43,7 +39,7 @@ fn main() {
         let mut request1: Request = parse_from_bytes(&buffer1).unwrap();
         let mut request2: Request = parse_from_bytes(&buffer2).unwrap();
 
-        assert_eq!(request1.id, request2.id);
+        assert_eq!(request1.Id, request2.Id);
     }
 
     let microseconds = SystemTime::now().duration_since(start).unwrap().as_micros();

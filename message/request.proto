@@ -6,21 +6,13 @@ import "message/core.proto";
 option optimize_for = SPEED;
 
 message Request {
-    uint32 id = 1;
-    core.UuidMessage session = 2;
-    core.UuidMessage character = 3;
-    oneof request {
-        MovementRequest movement = 5;
-        FacingRequest facing = 6;
+    uint32 Id = 1;
+    core.UuidMessage Session = 2;
+    core.UuidMessage Character = 3;
+    oneof RequestData {
+        Direction Movement = 4;
+        Direction Facing = 5;
     }
-}
-
-message MovementRequest {
-    Direction direction = 1;
-}
-
-message FacingRequest {
-    Direction direction = 1;
 }
 
 enum Direction {

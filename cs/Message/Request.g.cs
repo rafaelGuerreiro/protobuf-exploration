@@ -25,24 +25,19 @@ namespace Message.Request {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "ChVtZXNzYWdlL3JlcXVlc3QucHJvdG8SD21lc3NhZ2UucmVxdWVzdBoSbWVz",
-            "c2FnZS9jb3JlLnByb3RvIuIBCgdSZXF1ZXN0EgoKAmlkGAEgASgNEioKB3Nl",
-            "c3Npb24YAiABKAsyGS5tZXNzYWdlLmNvcmUuVXVpZE1lc3NhZ2USLAoJY2hh",
-            "cmFjdGVyGAMgASgLMhkubWVzc2FnZS5jb3JlLlV1aWRNZXNzYWdlEjQKCG1v",
-            "dmVtZW50GAUgASgLMiAubWVzc2FnZS5yZXF1ZXN0Lk1vdmVtZW50UmVxdWVz",
-            "dEgAEjAKBmZhY2luZxgGIAEoCzIeLm1lc3NhZ2UucmVxdWVzdC5GYWNpbmdS",
-            "ZXF1ZXN0SABCCQoHcmVxdWVzdCJACg9Nb3ZlbWVudFJlcXVlc3QSLQoJZGly",
-            "ZWN0aW9uGAEgASgOMhoubWVzc2FnZS5yZXF1ZXN0LkRpcmVjdGlvbiI+Cg1G",
-            "YWNpbmdSZXF1ZXN0Ei0KCWRpcmVjdGlvbhgBIAEoDjIaLm1lc3NhZ2UucmVx",
-            "dWVzdC5EaXJlY3Rpb24qewoJRGlyZWN0aW9uEggKBE5vbmUQABIJCgVOb3J0",
-            "aBABEg0KCU5vcnRoRWFzdBADEggKBEVhc3QQAhINCglTb3V0aEVhc3QQBhIJ",
-            "CgVTb3V0aBAEEg0KCVNvdXRoV2VzdBAMEggKBFdlc3QQCBINCglOb3J0aFdl",
-            "c3QQCUICSAFiBnByb3RvMw=="));
+            "c2FnZS9jb3JlLnByb3RvItwBCgdSZXF1ZXN0EgoKAklkGAEgASgNEioKB1Nl",
+            "c3Npb24YAiABKAsyGS5tZXNzYWdlLmNvcmUuVXVpZE1lc3NhZ2USLAoJQ2hh",
+            "cmFjdGVyGAMgASgLMhkubWVzc2FnZS5jb3JlLlV1aWRNZXNzYWdlEi4KCE1v",
+            "dmVtZW50GAQgASgOMhoubWVzc2FnZS5yZXF1ZXN0LkRpcmVjdGlvbkgAEiwK",
+            "BkZhY2luZxgFIAEoDjIaLm1lc3NhZ2UucmVxdWVzdC5EaXJlY3Rpb25IAEIN",
+            "CgtSZXF1ZXN0RGF0YSp7CglEaXJlY3Rpb24SCAoETm9uZRAAEgkKBU5vcnRo",
+            "EAESDQoJTm9ydGhFYXN0EAMSCAoERWFzdBACEg0KCVNvdXRoRWFzdBAGEgkK",
+            "BVNvdXRoEAQSDQoJU291dGhXZXN0EAwSCAoEV2VzdBAIEg0KCU5vcnRoV2Vz",
+            "dBAJQgJIAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Message.Core.CoreReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Message.Request.Direction), }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.Request.Request), global::Message.Request.Request.Parser, new[]{ "Id", "Session", "Character", "Movement", "Facing" }, new[]{ "Request" }, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.Request.MovementRequest), global::Message.Request.MovementRequest.Parser, new[]{ "Direction" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Message.Request.FacingRequest), global::Message.Request.FacingRequest.Parser, new[]{ "Direction" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Message.Request.Request), global::Message.Request.Request.Parser, new[]{ "Id", "Session", "Character", "Movement", "Facing" }, new[]{ "RequestData" }, null, null)
           }));
     }
     #endregion
@@ -92,12 +87,12 @@ namespace Message.Request {
       id_ = other.id_;
       session_ = other.session_ != null ? other.session_.Clone() : null;
       character_ = other.character_ != null ? other.character_.Clone() : null;
-      switch (other.RequestCase) {
-        case RequestOneofCase.Movement:
-          Movement = other.Movement.Clone();
+      switch (other.RequestDataCase) {
+        case RequestDataOneofCase.Movement:
+          Movement = other.Movement;
           break;
-        case RequestOneofCase.Facing:
-          Facing = other.Facing.Clone();
+        case RequestDataOneofCase.Facing:
+          Facing = other.Facing;
           break;
       }
 
@@ -109,7 +104,7 @@ namespace Message.Request {
       return new Request(this);
     }
 
-    /// <summary>Field number for the "id" field.</summary>
+    /// <summary>Field number for the "Id" field.</summary>
     public const int IdFieldNumber = 1;
     private uint id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -120,7 +115,7 @@ namespace Message.Request {
       }
     }
 
-    /// <summary>Field number for the "session" field.</summary>
+    /// <summary>Field number for the "Session" field.</summary>
     public const int SessionFieldNumber = 2;
     private global::Message.Core.UuidMessage session_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -131,7 +126,7 @@ namespace Message.Request {
       }
     }
 
-    /// <summary>Field number for the "character" field.</summary>
+    /// <summary>Field number for the "Character" field.</summary>
     public const int CharacterFieldNumber = 3;
     private global::Message.Core.UuidMessage character_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -142,45 +137,45 @@ namespace Message.Request {
       }
     }
 
-    /// <summary>Field number for the "movement" field.</summary>
-    public const int MovementFieldNumber = 5;
+    /// <summary>Field number for the "Movement" field.</summary>
+    public const int MovementFieldNumber = 4;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Message.Request.MovementRequest Movement {
-      get { return requestCase_ == RequestOneofCase.Movement ? (global::Message.Request.MovementRequest) request_ : null; }
+    public global::Message.Request.Direction Movement {
+      get { return requestDataCase_ == RequestDataOneofCase.Movement ? (global::Message.Request.Direction) requestData_ : 0; }
       set {
-        request_ = value;
-        requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.Movement;
+        requestData_ = value;
+        requestDataCase_ = RequestDataOneofCase.Movement;
       }
     }
 
-    /// <summary>Field number for the "facing" field.</summary>
-    public const int FacingFieldNumber = 6;
+    /// <summary>Field number for the "Facing" field.</summary>
+    public const int FacingFieldNumber = 5;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Message.Request.FacingRequest Facing {
-      get { return requestCase_ == RequestOneofCase.Facing ? (global::Message.Request.FacingRequest) request_ : null; }
+    public global::Message.Request.Direction Facing {
+      get { return requestDataCase_ == RequestDataOneofCase.Facing ? (global::Message.Request.Direction) requestData_ : 0; }
       set {
-        request_ = value;
-        requestCase_ = value == null ? RequestOneofCase.None : RequestOneofCase.Facing;
+        requestData_ = value;
+        requestDataCase_ = RequestDataOneofCase.Facing;
       }
     }
 
-    private object request_;
-    /// <summary>Enum of possible cases for the "request" oneof.</summary>
-    public enum RequestOneofCase {
+    private object requestData_;
+    /// <summary>Enum of possible cases for the "RequestData" oneof.</summary>
+    public enum RequestDataOneofCase {
       None = 0,
-      Movement = 5,
-      Facing = 6,
+      Movement = 4,
+      Facing = 5,
     }
-    private RequestOneofCase requestCase_ = RequestOneofCase.None;
+    private RequestDataOneofCase requestDataCase_ = RequestDataOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public RequestOneofCase RequestCase {
-      get { return requestCase_; }
+    public RequestDataOneofCase RequestDataCase {
+      get { return requestDataCase_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void ClearRequest() {
-      requestCase_ = RequestOneofCase.None;
-      request_ = null;
+    public void ClearRequestData() {
+      requestDataCase_ = RequestDataOneofCase.None;
+      requestData_ = null;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -199,9 +194,9 @@ namespace Message.Request {
       if (Id != other.Id) return false;
       if (!object.Equals(Session, other.Session)) return false;
       if (!object.Equals(Character, other.Character)) return false;
-      if (!object.Equals(Movement, other.Movement)) return false;
-      if (!object.Equals(Facing, other.Facing)) return false;
-      if (RequestCase != other.RequestCase) return false;
+      if (Movement != other.Movement) return false;
+      if (Facing != other.Facing) return false;
+      if (RequestDataCase != other.RequestDataCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -211,9 +206,9 @@ namespace Message.Request {
       if (Id != 0) hash ^= Id.GetHashCode();
       if (session_ != null) hash ^= Session.GetHashCode();
       if (character_ != null) hash ^= Character.GetHashCode();
-      if (requestCase_ == RequestOneofCase.Movement) hash ^= Movement.GetHashCode();
-      if (requestCase_ == RequestOneofCase.Facing) hash ^= Facing.GetHashCode();
-      hash ^= (int) requestCase_;
+      if (requestDataCase_ == RequestDataOneofCase.Movement) hash ^= Movement.GetHashCode();
+      if (requestDataCase_ == RequestDataOneofCase.Facing) hash ^= Facing.GetHashCode();
+      hash ^= (int) requestDataCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -239,13 +234,13 @@ namespace Message.Request {
         output.WriteRawTag(26);
         output.WriteMessage(Character);
       }
-      if (requestCase_ == RequestOneofCase.Movement) {
-        output.WriteRawTag(42);
-        output.WriteMessage(Movement);
+      if (requestDataCase_ == RequestDataOneofCase.Movement) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) Movement);
       }
-      if (requestCase_ == RequestOneofCase.Facing) {
-        output.WriteRawTag(50);
-        output.WriteMessage(Facing);
+      if (requestDataCase_ == RequestDataOneofCase.Facing) {
+        output.WriteRawTag(40);
+        output.WriteEnum((int) Facing);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -264,11 +259,11 @@ namespace Message.Request {
       if (character_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Character);
       }
-      if (requestCase_ == RequestOneofCase.Movement) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Movement);
+      if (requestDataCase_ == RequestDataOneofCase.Movement) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Movement);
       }
-      if (requestCase_ == RequestOneofCase.Facing) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Facing);
+      if (requestDataCase_ == RequestDataOneofCase.Facing) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Facing);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -296,18 +291,12 @@ namespace Message.Request {
         }
         Character.MergeFrom(other.Character);
       }
-      switch (other.RequestCase) {
-        case RequestOneofCase.Movement:
-          if (Movement == null) {
-            Movement = new global::Message.Request.MovementRequest();
-          }
-          Movement.MergeFrom(other.Movement);
+      switch (other.RequestDataCase) {
+        case RequestDataOneofCase.Movement:
+          Movement = other.Movement;
           break;
-        case RequestOneofCase.Facing:
-          if (Facing == null) {
-            Facing = new global::Message.Request.FacingRequest();
-          }
-          Facing.MergeFrom(other.Facing);
+        case RequestDataOneofCase.Facing:
+          Facing = other.Facing;
           break;
       }
 
@@ -340,280 +329,14 @@ namespace Message.Request {
             input.ReadMessage(Character);
             break;
           }
-          case 42: {
-            global::Message.Request.MovementRequest subBuilder = new global::Message.Request.MovementRequest();
-            if (requestCase_ == RequestOneofCase.Movement) {
-              subBuilder.MergeFrom(Movement);
-            }
-            input.ReadMessage(subBuilder);
-            Movement = subBuilder;
+          case 32: {
+            requestData_ = input.ReadEnum();
+            requestDataCase_ = RequestDataOneofCase.Movement;
             break;
           }
-          case 50: {
-            global::Message.Request.FacingRequest subBuilder = new global::Message.Request.FacingRequest();
-            if (requestCase_ == RequestOneofCase.Facing) {
-              subBuilder.MergeFrom(Facing);
-            }
-            input.ReadMessage(subBuilder);
-            Facing = subBuilder;
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class MovementRequest : pb::IMessage<MovementRequest> {
-    private static readonly pb::MessageParser<MovementRequest> _parser = new pb::MessageParser<MovementRequest>(() => new MovementRequest());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<MovementRequest> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Message.Request.RequestReflection.Descriptor.MessageTypes[1]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MovementRequest() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MovementRequest(MovementRequest other) : this() {
-      direction_ = other.direction_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MovementRequest Clone() {
-      return new MovementRequest(this);
-    }
-
-    /// <summary>Field number for the "direction" field.</summary>
-    public const int DirectionFieldNumber = 1;
-    private global::Message.Request.Direction direction_ = 0;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Message.Request.Direction Direction {
-      get { return direction_; }
-      set {
-        direction_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as MovementRequest);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(MovementRequest other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Direction != other.Direction) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Direction != 0) hash ^= Direction.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Direction != 0) {
-        output.WriteRawTag(8);
-        output.WriteEnum((int) Direction);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Direction != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Direction);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(MovementRequest other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Direction != 0) {
-        Direction = other.Direction;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            Direction = (global::Message.Request.Direction) input.ReadEnum();
-            break;
-          }
-        }
-      }
-    }
-
-  }
-
-  public sealed partial class FacingRequest : pb::IMessage<FacingRequest> {
-    private static readonly pb::MessageParser<FacingRequest> _parser = new pb::MessageParser<FacingRequest>(() => new FacingRequest());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<FacingRequest> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Message.Request.RequestReflection.Descriptor.MessageTypes[2]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public FacingRequest() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public FacingRequest(FacingRequest other) : this() {
-      direction_ = other.direction_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public FacingRequest Clone() {
-      return new FacingRequest(this);
-    }
-
-    /// <summary>Field number for the "direction" field.</summary>
-    public const int DirectionFieldNumber = 1;
-    private global::Message.Request.Direction direction_ = 0;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public global::Message.Request.Direction Direction {
-      get { return direction_; }
-      set {
-        direction_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as FacingRequest);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(FacingRequest other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Direction != other.Direction) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Direction != 0) hash ^= Direction.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-      if (Direction != 0) {
-        output.WriteRawTag(8);
-        output.WriteEnum((int) Direction);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      if (Direction != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Direction);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(FacingRequest other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Direction != 0) {
-        Direction = other.Direction;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            Direction = (global::Message.Request.Direction) input.ReadEnum();
+          case 40: {
+            requestData_ = input.ReadEnum();
+            requestDataCase_ = RequestDataOneofCase.Facing;
             break;
           }
         }

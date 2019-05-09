@@ -24,11 +24,11 @@ use protobuf::ProtobufEnum as ProtobufEnum_imported_for_functions;
 #[derive(PartialEq,Clone,Default)]
 pub struct Request {
     // message fields
-    pub id: u32,
-    pub session: ::protobuf::SingularPtrField<super::core::UuidMessage>,
-    pub character: ::protobuf::SingularPtrField<super::core::UuidMessage>,
+    pub Id: u32,
+    pub Session: ::protobuf::SingularPtrField<super::core::UuidMessage>,
+    pub Character: ::protobuf::SingularPtrField<super::core::UuidMessage>,
     // message oneof groups
-    pub request: ::std::option::Option<Request_oneof_request>,
+    pub RequestData: ::std::option::Option<Request_oneof_RequestData>,
     // special fields
     pub unknown_fields: ::protobuf::UnknownFields,
     pub cached_size: ::protobuf::CachedSize,
@@ -41,9 +41,9 @@ impl<'a> ::std::default::Default for &'a Request {
 }
 
 #[derive(Clone,PartialEq,Debug)]
-pub enum Request_oneof_request {
-    movement(MovementRequest),
-    facing(FacingRequest),
+pub enum Request_oneof_RequestData {
+    Movement(Direction),
+    Facing(Direction),
 }
 
 impl Request {
@@ -51,208 +51,150 @@ impl Request {
         ::std::default::Default::default()
     }
 
-    // uint32 id = 1;
+    // uint32 Id = 1;
 
 
-    pub fn get_id(&self) -> u32 {
-        self.id
+    pub fn get_Id(&self) -> u32 {
+        self.Id
     }
-    pub fn clear_id(&mut self) {
-        self.id = 0;
-    }
-
-    // Param is passed by value, moved
-    pub fn set_id(&mut self, v: u32) {
-        self.id = v;
-    }
-
-    // .message.core.UuidMessage session = 2;
-
-
-    pub fn get_session(&self) -> &super::core::UuidMessage {
-        self.session.as_ref().unwrap_or_else(|| super::core::UuidMessage::default_instance())
-    }
-    pub fn clear_session(&mut self) {
-        self.session.clear();
-    }
-
-    pub fn has_session(&self) -> bool {
-        self.session.is_some()
+    pub fn clear_Id(&mut self) {
+        self.Id = 0;
     }
 
     // Param is passed by value, moved
-    pub fn set_session(&mut self, v: super::core::UuidMessage) {
-        self.session = ::protobuf::SingularPtrField::some(v);
+    pub fn set_Id(&mut self, v: u32) {
+        self.Id = v;
+    }
+
+    // .message.core.UuidMessage Session = 2;
+
+
+    pub fn get_Session(&self) -> &super::core::UuidMessage {
+        self.Session.as_ref().unwrap_or_else(|| super::core::UuidMessage::default_instance())
+    }
+    pub fn clear_Session(&mut self) {
+        self.Session.clear();
+    }
+
+    pub fn has_Session(&self) -> bool {
+        self.Session.is_some()
+    }
+
+    // Param is passed by value, moved
+    pub fn set_Session(&mut self, v: super::core::UuidMessage) {
+        self.Session = ::protobuf::SingularPtrField::some(v);
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_session(&mut self) -> &mut super::core::UuidMessage {
-        if self.session.is_none() {
-            self.session.set_default();
+    pub fn mut_Session(&mut self) -> &mut super::core::UuidMessage {
+        if self.Session.is_none() {
+            self.Session.set_default();
         }
-        self.session.as_mut().unwrap()
+        self.Session.as_mut().unwrap()
     }
 
     // Take field
-    pub fn take_session(&mut self) -> super::core::UuidMessage {
-        self.session.take().unwrap_or_else(|| super::core::UuidMessage::new())
+    pub fn take_Session(&mut self) -> super::core::UuidMessage {
+        self.Session.take().unwrap_or_else(|| super::core::UuidMessage::new())
     }
 
-    // .message.core.UuidMessage character = 3;
+    // .message.core.UuidMessage Character = 3;
 
 
-    pub fn get_character(&self) -> &super::core::UuidMessage {
-        self.character.as_ref().unwrap_or_else(|| super::core::UuidMessage::default_instance())
+    pub fn get_Character(&self) -> &super::core::UuidMessage {
+        self.Character.as_ref().unwrap_or_else(|| super::core::UuidMessage::default_instance())
     }
-    pub fn clear_character(&mut self) {
-        self.character.clear();
+    pub fn clear_Character(&mut self) {
+        self.Character.clear();
     }
 
-    pub fn has_character(&self) -> bool {
-        self.character.is_some()
+    pub fn has_Character(&self) -> bool {
+        self.Character.is_some()
     }
 
     // Param is passed by value, moved
-    pub fn set_character(&mut self, v: super::core::UuidMessage) {
-        self.character = ::protobuf::SingularPtrField::some(v);
+    pub fn set_Character(&mut self, v: super::core::UuidMessage) {
+        self.Character = ::protobuf::SingularPtrField::some(v);
     }
 
     // Mutable pointer to the field.
     // If field is not initialized, it is initialized with default value first.
-    pub fn mut_character(&mut self) -> &mut super::core::UuidMessage {
-        if self.character.is_none() {
-            self.character.set_default();
+    pub fn mut_Character(&mut self) -> &mut super::core::UuidMessage {
+        if self.Character.is_none() {
+            self.Character.set_default();
         }
-        self.character.as_mut().unwrap()
+        self.Character.as_mut().unwrap()
     }
 
     // Take field
-    pub fn take_character(&mut self) -> super::core::UuidMessage {
-        self.character.take().unwrap_or_else(|| super::core::UuidMessage::new())
+    pub fn take_Character(&mut self) -> super::core::UuidMessage {
+        self.Character.take().unwrap_or_else(|| super::core::UuidMessage::new())
     }
 
-    // .message.request.MovementRequest movement = 5;
+    // .message.request.Direction Movement = 4;
 
 
-    pub fn get_movement(&self) -> &MovementRequest {
-        match self.request {
-            ::std::option::Option::Some(Request_oneof_request::movement(ref v)) => v,
-            _ => MovementRequest::default_instance(),
+    pub fn get_Movement(&self) -> Direction {
+        match self.RequestData {
+            ::std::option::Option::Some(Request_oneof_RequestData::Movement(v)) => v,
+            _ => Direction::None,
         }
     }
-    pub fn clear_movement(&mut self) {
-        self.request = ::std::option::Option::None;
+    pub fn clear_Movement(&mut self) {
+        self.RequestData = ::std::option::Option::None;
     }
 
-    pub fn has_movement(&self) -> bool {
-        match self.request {
-            ::std::option::Option::Some(Request_oneof_request::movement(..)) => true,
+    pub fn has_Movement(&self) -> bool {
+        match self.RequestData {
+            ::std::option::Option::Some(Request_oneof_RequestData::Movement(..)) => true,
             _ => false,
         }
     }
 
     // Param is passed by value, moved
-    pub fn set_movement(&mut self, v: MovementRequest) {
-        self.request = ::std::option::Option::Some(Request_oneof_request::movement(v))
+    pub fn set_Movement(&mut self, v: Direction) {
+        self.RequestData = ::std::option::Option::Some(Request_oneof_RequestData::Movement(v))
     }
 
-    // Mutable pointer to the field.
-    pub fn mut_movement(&mut self) -> &mut MovementRequest {
-        if let ::std::option::Option::Some(Request_oneof_request::movement(_)) = self.request {
-        } else {
-            self.request = ::std::option::Option::Some(Request_oneof_request::movement(MovementRequest::new()));
-        }
-        match self.request {
-            ::std::option::Option::Some(Request_oneof_request::movement(ref mut v)) => v,
-            _ => panic!(),
+    // .message.request.Direction Facing = 5;
+
+
+    pub fn get_Facing(&self) -> Direction {
+        match self.RequestData {
+            ::std::option::Option::Some(Request_oneof_RequestData::Facing(v)) => v,
+            _ => Direction::None,
         }
     }
-
-    // Take field
-    pub fn take_movement(&mut self) -> MovementRequest {
-        if self.has_movement() {
-            match self.request.take() {
-                ::std::option::Option::Some(Request_oneof_request::movement(v)) => v,
-                _ => panic!(),
-            }
-        } else {
-            MovementRequest::new()
-        }
+    pub fn clear_Facing(&mut self) {
+        self.RequestData = ::std::option::Option::None;
     }
 
-    // .message.request.FacingRequest facing = 6;
-
-
-    pub fn get_facing(&self) -> &FacingRequest {
-        match self.request {
-            ::std::option::Option::Some(Request_oneof_request::facing(ref v)) => v,
-            _ => FacingRequest::default_instance(),
-        }
-    }
-    pub fn clear_facing(&mut self) {
-        self.request = ::std::option::Option::None;
-    }
-
-    pub fn has_facing(&self) -> bool {
-        match self.request {
-            ::std::option::Option::Some(Request_oneof_request::facing(..)) => true,
+    pub fn has_Facing(&self) -> bool {
+        match self.RequestData {
+            ::std::option::Option::Some(Request_oneof_RequestData::Facing(..)) => true,
             _ => false,
         }
     }
 
     // Param is passed by value, moved
-    pub fn set_facing(&mut self, v: FacingRequest) {
-        self.request = ::std::option::Option::Some(Request_oneof_request::facing(v))
-    }
-
-    // Mutable pointer to the field.
-    pub fn mut_facing(&mut self) -> &mut FacingRequest {
-        if let ::std::option::Option::Some(Request_oneof_request::facing(_)) = self.request {
-        } else {
-            self.request = ::std::option::Option::Some(Request_oneof_request::facing(FacingRequest::new()));
-        }
-        match self.request {
-            ::std::option::Option::Some(Request_oneof_request::facing(ref mut v)) => v,
-            _ => panic!(),
-        }
-    }
-
-    // Take field
-    pub fn take_facing(&mut self) -> FacingRequest {
-        if self.has_facing() {
-            match self.request.take() {
-                ::std::option::Option::Some(Request_oneof_request::facing(v)) => v,
-                _ => panic!(),
-            }
-        } else {
-            FacingRequest::new()
-        }
+    pub fn set_Facing(&mut self, v: Direction) {
+        self.RequestData = ::std::option::Option::Some(Request_oneof_RequestData::Facing(v))
     }
 }
 
 impl ::protobuf::Message for Request {
     fn is_initialized(&self) -> bool {
-        for v in &self.session {
+        for v in &self.Session {
             if !v.is_initialized() {
                 return false;
             }
         };
-        for v in &self.character {
+        for v in &self.Character {
             if !v.is_initialized() {
                 return false;
             }
         };
-        if let Some(Request_oneof_request::movement(ref v)) = self.request {
-            if !v.is_initialized() {
-                return false;
-            }
-        }
-        if let Some(Request_oneof_request::facing(ref v)) = self.request {
-            if !v.is_initialized() {
-                return false;
-            }
-        }
         true
     }
 
@@ -265,25 +207,25 @@ impl ::protobuf::Message for Request {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
                     let tmp = is.read_uint32()?;
-                    self.id = tmp;
+                    self.Id = tmp;
                 },
                 2 => {
-                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.session)?;
+                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.Session)?;
                 },
                 3 => {
-                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.character)?;
+                    ::protobuf::rt::read_singular_message_into(wire_type, is, &mut self.Character)?;
+                },
+                4 => {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
+                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
+                    }
+                    self.RequestData = ::std::option::Option::Some(Request_oneof_RequestData::Movement(is.read_enum()?));
                 },
                 5 => {
-                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
+                    if wire_type != ::protobuf::wire_format::WireTypeVarint {
                         return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
                     }
-                    self.request = ::std::option::Option::Some(Request_oneof_request::movement(is.read_message()?));
-                },
-                6 => {
-                    if wire_type != ::protobuf::wire_format::WireTypeLengthDelimited {
-                        return ::std::result::Result::Err(::protobuf::rt::unexpected_wire_type(wire_type));
-                    }
-                    self.request = ::std::option::Option::Some(Request_oneof_request::facing(is.read_message()?));
+                    self.RequestData = ::std::option::Option::Some(Request_oneof_RequestData::Facing(is.read_enum()?));
                 },
                 _ => {
                     ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
@@ -297,26 +239,24 @@ impl ::protobuf::Message for Request {
     #[allow(unused_variables)]
     fn compute_size(&self) -> u32 {
         let mut my_size = 0;
-        if self.id != 0 {
-            my_size += ::protobuf::rt::value_size(1, self.id, ::protobuf::wire_format::WireTypeVarint);
+        if self.Id != 0 {
+            my_size += ::protobuf::rt::value_size(1, self.Id, ::protobuf::wire_format::WireTypeVarint);
         }
-        if let Some(ref v) = self.session.as_ref() {
+        if let Some(ref v) = self.Session.as_ref() {
             let len = v.compute_size();
             my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
         }
-        if let Some(ref v) = self.character.as_ref() {
+        if let Some(ref v) = self.Character.as_ref() {
             let len = v.compute_size();
             my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
         }
-        if let ::std::option::Option::Some(ref v) = self.request {
+        if let ::std::option::Option::Some(ref v) = self.RequestData {
             match v {
-                &Request_oneof_request::movement(ref v) => {
-                    let len = v.compute_size();
-                    my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
+                &Request_oneof_RequestData::Movement(v) => {
+                    my_size += ::protobuf::rt::enum_size(4, v);
                 },
-                &Request_oneof_request::facing(ref v) => {
-                    let len = v.compute_size();
-                    my_size += 1 + ::protobuf::rt::compute_raw_varint32_size(len) + len;
+                &Request_oneof_RequestData::Facing(v) => {
+                    my_size += ::protobuf::rt::enum_size(5, v);
                 },
             };
         }
@@ -326,30 +266,26 @@ impl ::protobuf::Message for Request {
     }
 
     fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream) -> ::protobuf::ProtobufResult<()> {
-        if self.id != 0 {
-            os.write_uint32(1, self.id)?;
+        if self.Id != 0 {
+            os.write_uint32(1, self.Id)?;
         }
-        if let Some(ref v) = self.session.as_ref() {
+        if let Some(ref v) = self.Session.as_ref() {
             os.write_tag(2, ::protobuf::wire_format::WireTypeLengthDelimited)?;
             os.write_raw_varint32(v.get_cached_size())?;
             v.write_to_with_cached_sizes(os)?;
         }
-        if let Some(ref v) = self.character.as_ref() {
+        if let Some(ref v) = self.Character.as_ref() {
             os.write_tag(3, ::protobuf::wire_format::WireTypeLengthDelimited)?;
             os.write_raw_varint32(v.get_cached_size())?;
             v.write_to_with_cached_sizes(os)?;
         }
-        if let ::std::option::Option::Some(ref v) = self.request {
+        if let ::std::option::Option::Some(ref v) = self.RequestData {
             match v {
-                &Request_oneof_request::movement(ref v) => {
-                    os.write_tag(5, ::protobuf::wire_format::WireTypeLengthDelimited)?;
-                    os.write_raw_varint32(v.get_cached_size())?;
-                    v.write_to_with_cached_sizes(os)?;
+                &Request_oneof_RequestData::Movement(v) => {
+                    os.write_enum(4, v.value())?;
                 },
-                &Request_oneof_request::facing(ref v) => {
-                    os.write_tag(6, ::protobuf::wire_format::WireTypeLengthDelimited)?;
-                    os.write_raw_varint32(v.get_cached_size())?;
-                    v.write_to_with_cached_sizes(os)?;
+                &Request_oneof_RequestData::Facing(v) => {
+                    os.write_enum(5, v.value())?;
                 },
             };
         }
@@ -396,29 +332,29 @@ impl ::protobuf::Message for Request {
             descriptor.get(|| {
                 let mut fields = ::std::vec::Vec::new();
                 fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeUint32>(
-                    "id",
-                    |m: &Request| { &m.id },
-                    |m: &mut Request| { &mut m.id },
+                    "Id",
+                    |m: &Request| { &m.Id },
+                    |m: &mut Request| { &mut m.Id },
                 ));
                 fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::core::UuidMessage>>(
-                    "session",
-                    |m: &Request| { &m.session },
-                    |m: &mut Request| { &mut m.session },
+                    "Session",
+                    |m: &Request| { &m.Session },
+                    |m: &mut Request| { &mut m.Session },
                 ));
                 fields.push(::protobuf::reflect::accessor::make_singular_ptr_field_accessor::<_, ::protobuf::types::ProtobufTypeMessage<super::core::UuidMessage>>(
-                    "character",
-                    |m: &Request| { &m.character },
-                    |m: &mut Request| { &mut m.character },
+                    "Character",
+                    |m: &Request| { &m.Character },
+                    |m: &mut Request| { &mut m.Character },
                 ));
-                fields.push(::protobuf::reflect::accessor::make_singular_message_accessor::<_, MovementRequest>(
-                    "movement",
-                    Request::has_movement,
-                    Request::get_movement,
+                fields.push(::protobuf::reflect::accessor::make_singular_enum_accessor::<_, Direction>(
+                    "Movement",
+                    Request::has_Movement,
+                    Request::get_Movement,
                 ));
-                fields.push(::protobuf::reflect::accessor::make_singular_message_accessor::<_, FacingRequest>(
-                    "facing",
-                    Request::has_facing,
-                    Request::get_facing,
+                fields.push(::protobuf::reflect::accessor::make_singular_enum_accessor::<_, Direction>(
+                    "Facing",
+                    Request::has_Facing,
+                    Request::get_Facing,
                 ));
                 ::protobuf::reflect::MessageDescriptor::new::<Request>(
                     "Request",
@@ -442,11 +378,11 @@ impl ::protobuf::Message for Request {
 
 impl ::protobuf::Clear for Request {
     fn clear(&mut self) {
-        self.id = 0;
-        self.session.clear();
-        self.character.clear();
-        self.request = ::std::option::Option::None;
-        self.request = ::std::option::Option::None;
+        self.Id = 0;
+        self.Session.clear();
+        self.Character.clear();
+        self.RequestData = ::std::option::Option::None;
+        self.RequestData = ::std::option::Option::None;
         self.unknown_fields.clear();
     }
 }
@@ -458,322 +394,6 @@ impl ::std::fmt::Debug for Request {
 }
 
 impl ::protobuf::reflect::ProtobufValue for Request {
-    fn as_ref(&self) -> ::protobuf::reflect::ProtobufValueRef {
-        ::protobuf::reflect::ProtobufValueRef::Message(self)
-    }
-}
-
-#[derive(PartialEq,Clone,Default)]
-pub struct MovementRequest {
-    // message fields
-    pub direction: Direction,
-    // special fields
-    pub unknown_fields: ::protobuf::UnknownFields,
-    pub cached_size: ::protobuf::CachedSize,
-}
-
-impl<'a> ::std::default::Default for &'a MovementRequest {
-    fn default() -> &'a MovementRequest {
-        <MovementRequest as ::protobuf::Message>::default_instance()
-    }
-}
-
-impl MovementRequest {
-    pub fn new() -> MovementRequest {
-        ::std::default::Default::default()
-    }
-
-    // .message.request.Direction direction = 1;
-
-
-    pub fn get_direction(&self) -> Direction {
-        self.direction
-    }
-    pub fn clear_direction(&mut self) {
-        self.direction = Direction::None;
-    }
-
-    // Param is passed by value, moved
-    pub fn set_direction(&mut self, v: Direction) {
-        self.direction = v;
-    }
-}
-
-impl ::protobuf::Message for MovementRequest {
-    fn is_initialized(&self) -> bool {
-        true
-    }
-
-    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream) -> ::protobuf::ProtobufResult<()> {
-        while !is.eof()? {
-            let (field_number, wire_type) = is.read_tag_unpack()?;
-            match field_number {
-                1 => {
-                    ::protobuf::rt::read_proto3_enum_with_unknown_fields_into(wire_type, is, &mut self.direction, 1, &mut self.unknown_fields)?
-                },
-                _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
-                },
-            };
-        }
-        ::std::result::Result::Ok(())
-    }
-
-    // Compute sizes of nested messages
-    #[allow(unused_variables)]
-    fn compute_size(&self) -> u32 {
-        let mut my_size = 0;
-        if self.direction != Direction::None {
-            my_size += ::protobuf::rt::enum_size(1, self.direction);
-        }
-        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
-        self.cached_size.set(my_size);
-        my_size
-    }
-
-    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream) -> ::protobuf::ProtobufResult<()> {
-        if self.direction != Direction::None {
-            os.write_enum(1, self.direction.value())?;
-        }
-        os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
-    }
-
-    fn get_cached_size(&self) -> u32 {
-        self.cached_size.get()
-    }
-
-    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
-        &self.unknown_fields
-    }
-
-    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
-        &mut self.unknown_fields
-    }
-
-    fn as_any(&self) -> &::std::any::Any {
-        self as &::std::any::Any
-    }
-    fn as_any_mut(&mut self) -> &mut ::std::any::Any {
-        self as &mut ::std::any::Any
-    }
-    fn into_any(self: Box<Self>) -> ::std::boxed::Box<::std::any::Any> {
-        self
-    }
-
-    fn descriptor(&self) -> &'static ::protobuf::reflect::MessageDescriptor {
-        Self::descriptor_static()
-    }
-
-    fn new() -> MovementRequest {
-        MovementRequest::new()
-    }
-
-    fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static mut descriptor: ::protobuf::lazy::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::lazy::Lazy {
-            lock: ::protobuf::lazy::ONCE_INIT,
-            ptr: 0 as *const ::protobuf::reflect::MessageDescriptor,
-        };
-        unsafe {
-            descriptor.get(|| {
-                let mut fields = ::std::vec::Vec::new();
-                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeEnum<Direction>>(
-                    "direction",
-                    |m: &MovementRequest| { &m.direction },
-                    |m: &mut MovementRequest| { &mut m.direction },
-                ));
-                ::protobuf::reflect::MessageDescriptor::new::<MovementRequest>(
-                    "MovementRequest",
-                    fields,
-                    file_descriptor_proto()
-                )
-            })
-        }
-    }
-
-    fn default_instance() -> &'static MovementRequest {
-        static mut instance: ::protobuf::lazy::Lazy<MovementRequest> = ::protobuf::lazy::Lazy {
-            lock: ::protobuf::lazy::ONCE_INIT,
-            ptr: 0 as *const MovementRequest,
-        };
-        unsafe {
-            instance.get(MovementRequest::new)
-        }
-    }
-}
-
-impl ::protobuf::Clear for MovementRequest {
-    fn clear(&mut self) {
-        self.direction = Direction::None;
-        self.unknown_fields.clear();
-    }
-}
-
-impl ::std::fmt::Debug for MovementRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
-        ::protobuf::text_format::fmt(self, f)
-    }
-}
-
-impl ::protobuf::reflect::ProtobufValue for MovementRequest {
-    fn as_ref(&self) -> ::protobuf::reflect::ProtobufValueRef {
-        ::protobuf::reflect::ProtobufValueRef::Message(self)
-    }
-}
-
-#[derive(PartialEq,Clone,Default)]
-pub struct FacingRequest {
-    // message fields
-    pub direction: Direction,
-    // special fields
-    pub unknown_fields: ::protobuf::UnknownFields,
-    pub cached_size: ::protobuf::CachedSize,
-}
-
-impl<'a> ::std::default::Default for &'a FacingRequest {
-    fn default() -> &'a FacingRequest {
-        <FacingRequest as ::protobuf::Message>::default_instance()
-    }
-}
-
-impl FacingRequest {
-    pub fn new() -> FacingRequest {
-        ::std::default::Default::default()
-    }
-
-    // .message.request.Direction direction = 1;
-
-
-    pub fn get_direction(&self) -> Direction {
-        self.direction
-    }
-    pub fn clear_direction(&mut self) {
-        self.direction = Direction::None;
-    }
-
-    // Param is passed by value, moved
-    pub fn set_direction(&mut self, v: Direction) {
-        self.direction = v;
-    }
-}
-
-impl ::protobuf::Message for FacingRequest {
-    fn is_initialized(&self) -> bool {
-        true
-    }
-
-    fn merge_from(&mut self, is: &mut ::protobuf::CodedInputStream) -> ::protobuf::ProtobufResult<()> {
-        while !is.eof()? {
-            let (field_number, wire_type) = is.read_tag_unpack()?;
-            match field_number {
-                1 => {
-                    ::protobuf::rt::read_proto3_enum_with_unknown_fields_into(wire_type, is, &mut self.direction, 1, &mut self.unknown_fields)?
-                },
-                _ => {
-                    ::protobuf::rt::read_unknown_or_skip_group(field_number, wire_type, is, self.mut_unknown_fields())?;
-                },
-            };
-        }
-        ::std::result::Result::Ok(())
-    }
-
-    // Compute sizes of nested messages
-    #[allow(unused_variables)]
-    fn compute_size(&self) -> u32 {
-        let mut my_size = 0;
-        if self.direction != Direction::None {
-            my_size += ::protobuf::rt::enum_size(1, self.direction);
-        }
-        my_size += ::protobuf::rt::unknown_fields_size(self.get_unknown_fields());
-        self.cached_size.set(my_size);
-        my_size
-    }
-
-    fn write_to_with_cached_sizes(&self, os: &mut ::protobuf::CodedOutputStream) -> ::protobuf::ProtobufResult<()> {
-        if self.direction != Direction::None {
-            os.write_enum(1, self.direction.value())?;
-        }
-        os.write_unknown_fields(self.get_unknown_fields())?;
-        ::std::result::Result::Ok(())
-    }
-
-    fn get_cached_size(&self) -> u32 {
-        self.cached_size.get()
-    }
-
-    fn get_unknown_fields(&self) -> &::protobuf::UnknownFields {
-        &self.unknown_fields
-    }
-
-    fn mut_unknown_fields(&mut self) -> &mut ::protobuf::UnknownFields {
-        &mut self.unknown_fields
-    }
-
-    fn as_any(&self) -> &::std::any::Any {
-        self as &::std::any::Any
-    }
-    fn as_any_mut(&mut self) -> &mut ::std::any::Any {
-        self as &mut ::std::any::Any
-    }
-    fn into_any(self: Box<Self>) -> ::std::boxed::Box<::std::any::Any> {
-        self
-    }
-
-    fn descriptor(&self) -> &'static ::protobuf::reflect::MessageDescriptor {
-        Self::descriptor_static()
-    }
-
-    fn new() -> FacingRequest {
-        FacingRequest::new()
-    }
-
-    fn descriptor_static() -> &'static ::protobuf::reflect::MessageDescriptor {
-        static mut descriptor: ::protobuf::lazy::Lazy<::protobuf::reflect::MessageDescriptor> = ::protobuf::lazy::Lazy {
-            lock: ::protobuf::lazy::ONCE_INIT,
-            ptr: 0 as *const ::protobuf::reflect::MessageDescriptor,
-        };
-        unsafe {
-            descriptor.get(|| {
-                let mut fields = ::std::vec::Vec::new();
-                fields.push(::protobuf::reflect::accessor::make_simple_field_accessor::<_, ::protobuf::types::ProtobufTypeEnum<Direction>>(
-                    "direction",
-                    |m: &FacingRequest| { &m.direction },
-                    |m: &mut FacingRequest| { &mut m.direction },
-                ));
-                ::protobuf::reflect::MessageDescriptor::new::<FacingRequest>(
-                    "FacingRequest",
-                    fields,
-                    file_descriptor_proto()
-                )
-            })
-        }
-    }
-
-    fn default_instance() -> &'static FacingRequest {
-        static mut instance: ::protobuf::lazy::Lazy<FacingRequest> = ::protobuf::lazy::Lazy {
-            lock: ::protobuf::lazy::ONCE_INIT,
-            ptr: 0 as *const FacingRequest,
-        };
-        unsafe {
-            instance.get(FacingRequest::new)
-        }
-    }
-}
-
-impl ::protobuf::Clear for FacingRequest {
-    fn clear(&mut self) {
-        self.direction = Direction::None;
-        self.unknown_fields.clear();
-    }
-}
-
-impl ::std::fmt::Debug for FacingRequest {
-    fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
-        ::protobuf::text_format::fmt(self, f)
-    }
-}
-
-impl ::protobuf::reflect::ProtobufValue for FacingRequest {
     fn as_ref(&self) -> ::protobuf::reflect::ProtobufValueRef {
         ::protobuf::reflect::ProtobufValueRef::Message(self)
     }
@@ -857,68 +477,56 @@ impl ::protobuf::reflect::ProtobufValue for Direction {
 
 static file_descriptor_proto_data: &'static [u8] = b"\
     \n\x15message/request.proto\x12\x0fmessage.request\x1a\x12message/core.p\
-    roto\"\x8c\x02\n\x07Request\x12\x0e\n\x02id\x18\x01\x20\x01(\rR\x02id\
-    \x123\n\x07session\x18\x02\x20\x01(\x0b2\x19.message.core.UuidMessageR\
-    \x07session\x127\n\tcharacter\x18\x03\x20\x01(\x0b2\x19.message.core.Uui\
-    dMessageR\tcharacter\x12>\n\x08movement\x18\x05\x20\x01(\x0b2\x20.messag\
-    e.request.MovementRequestH\0R\x08movement\x128\n\x06facing\x18\x06\x20\
-    \x01(\x0b2\x1e.message.request.FacingRequestH\0R\x06facingB\t\n\x07reque\
-    st\"K\n\x0fMovementRequest\x128\n\tdirection\x18\x01\x20\x01(\x0e2\x1a.m\
-    essage.request.DirectionR\tdirection\"I\n\rFacingRequest\x128\n\tdirecti\
-    on\x18\x01\x20\x01(\x0e2\x1a.message.request.DirectionR\tdirection*{\n\t\
-    Direction\x12\x08\n\x04None\x10\0\x12\t\n\x05North\x10\x01\x12\r\n\tNort\
-    hEast\x10\x03\x12\x08\n\x04East\x10\x02\x12\r\n\tSouthEast\x10\x06\x12\t\
-    \n\x05South\x10\x04\x12\r\n\tSouthWest\x10\x0c\x12\x08\n\x04West\x10\x08\
-    \x12\r\n\tNorthWest\x10\tB\x02H\x01J\xf5\x07\n\x06\x12\x04\0\0#\x01\n\
-    \x08\n\x01\x0c\x12\x03\0\0\x12\n\x08\n\x01\x02\x12\x03\x01\0\x18\n\t\n\
-    \x02\x03\0\x12\x03\x03\0\x1c\n\x08\n\x01\x08\x12\x03\x05\0\x1c\n\t\n\x02\
-    \x08\t\x12\x03\x05\0\x1c\n\n\n\x02\x04\0\x12\x04\x07\0\x0f\x01\n\n\n\x03\
-    \x04\0\x01\x12\x03\x07\x08\x0f\n\x0b\n\x04\x04\0\x02\0\x12\x03\x08\x04\
-    \x12\n\r\n\x05\x04\0\x02\0\x04\x12\x04\x08\x04\x07\x11\n\x0c\n\x05\x04\0\
-    \x02\0\x05\x12\x03\x08\x04\n\n\x0c\n\x05\x04\0\x02\0\x01\x12\x03\x08\x0b\
-    \r\n\x0c\n\x05\x04\0\x02\0\x03\x12\x03\x08\x10\x11\n\x0b\n\x04\x04\0\x02\
-    \x01\x12\x03\t\x04!\n\r\n\x05\x04\0\x02\x01\x04\x12\x04\t\x04\x08\x12\n\
-    \x0c\n\x05\x04\0\x02\x01\x06\x12\x03\t\x04\x14\n\x0c\n\x05\x04\0\x02\x01\
-    \x01\x12\x03\t\x15\x1c\n\x0c\n\x05\x04\0\x02\x01\x03\x12\x03\t\x1f\x20\n\
-    \x0b\n\x04\x04\0\x02\x02\x12\x03\n\x04#\n\r\n\x05\x04\0\x02\x02\x04\x12\
-    \x04\n\x04\t!\n\x0c\n\x05\x04\0\x02\x02\x06\x12\x03\n\x04\x14\n\x0c\n\
-    \x05\x04\0\x02\x02\x01\x12\x03\n\x15\x1e\n\x0c\n\x05\x04\0\x02\x02\x03\
-    \x12\x03\n!\"\n\x0c\n\x04\x04\0\x08\0\x12\x04\x0b\x04\x0e\x05\n\x0c\n\
-    \x05\x04\0\x08\0\x01\x12\x03\x0b\n\x11\n\x0b\n\x04\x04\0\x02\x03\x12\x03\
-    \x0c\x08%\n\x0c\n\x05\x04\0\x02\x03\x06\x12\x03\x0c\x08\x17\n\x0c\n\x05\
-    \x04\0\x02\x03\x01\x12\x03\x0c\x18\x20\n\x0c\n\x05\x04\0\x02\x03\x03\x12\
-    \x03\x0c#$\n\x0b\n\x04\x04\0\x02\x04\x12\x03\r\x08!\n\x0c\n\x05\x04\0\
-    \x02\x04\x06\x12\x03\r\x08\x15\n\x0c\n\x05\x04\0\x02\x04\x01\x12\x03\r\
-    \x16\x1c\n\x0c\n\x05\x04\0\x02\x04\x03\x12\x03\r\x1f\x20\n\n\n\x02\x04\
-    \x01\x12\x04\x11\0\x13\x01\n\n\n\x03\x04\x01\x01\x12\x03\x11\x08\x17\n\
-    \x0b\n\x04\x04\x01\x02\0\x12\x03\x12\x04\x1c\n\r\n\x05\x04\x01\x02\0\x04\
-    \x12\x04\x12\x04\x11\x19\n\x0c\n\x05\x04\x01\x02\0\x06\x12\x03\x12\x04\r\
-    \n\x0c\n\x05\x04\x01\x02\0\x01\x12\x03\x12\x0e\x17\n\x0c\n\x05\x04\x01\
-    \x02\0\x03\x12\x03\x12\x1a\x1b\n\n\n\x02\x04\x02\x12\x04\x15\0\x17\x01\n\
-    \n\n\x03\x04\x02\x01\x12\x03\x15\x08\x15\n\x0b\n\x04\x04\x02\x02\0\x12\
-    \x03\x16\x04\x1c\n\r\n\x05\x04\x02\x02\0\x04\x12\x04\x16\x04\x15\x17\n\
-    \x0c\n\x05\x04\x02\x02\0\x06\x12\x03\x16\x04\r\n\x0c\n\x05\x04\x02\x02\0\
-    \x01\x12\x03\x16\x0e\x17\n\x0c\n\x05\x04\x02\x02\0\x03\x12\x03\x16\x1a\
-    \x1b\n\n\n\x02\x05\0\x12\x04\x19\0#\x01\n\n\n\x03\x05\0\x01\x12\x03\x19\
-    \x05\x0e\n\x0b\n\x04\x05\0\x02\0\x12\x03\x1a\x04\x10\n\x0c\n\x05\x05\0\
-    \x02\0\x01\x12\x03\x1a\x04\x08\n\x0c\n\x05\x05\0\x02\0\x02\x12\x03\x1a\
-    \x0b\x0f\n\x0b\n\x04\x05\0\x02\x01\x12\x03\x1b\x04\x11\n\x0c\n\x05\x05\0\
-    \x02\x01\x01\x12\x03\x1b\x04\t\n\x0c\n\x05\x05\0\x02\x01\x02\x12\x03\x1b\
-    \x0c\x10\n\x0b\n\x04\x05\0\x02\x02\x12\x03\x1c\x04\x15\n\x0c\n\x05\x05\0\
-    \x02\x02\x01\x12\x03\x1c\x04\r\n\x0c\n\x05\x05\0\x02\x02\x02\x12\x03\x1c\
-    \x10\x14\n\x0b\n\x04\x05\0\x02\x03\x12\x03\x1d\x04\x10\n\x0c\n\x05\x05\0\
-    \x02\x03\x01\x12\x03\x1d\x04\x08\n\x0c\n\x05\x05\0\x02\x03\x02\x12\x03\
-    \x1d\x0b\x0f\n\x0b\n\x04\x05\0\x02\x04\x12\x03\x1e\x04\x15\n\x0c\n\x05\
-    \x05\0\x02\x04\x01\x12\x03\x1e\x04\r\n\x0c\n\x05\x05\0\x02\x04\x02\x12\
-    \x03\x1e\x10\x14\n\x0b\n\x04\x05\0\x02\x05\x12\x03\x1f\x04\x11\n\x0c\n\
-    \x05\x05\0\x02\x05\x01\x12\x03\x1f\x04\t\n\x0c\n\x05\x05\0\x02\x05\x02\
-    \x12\x03\x1f\x0c\x10\n\x0b\n\x04\x05\0\x02\x06\x12\x03\x20\x04\x15\n\x0c\
-    \n\x05\x05\0\x02\x06\x01\x12\x03\x20\x04\r\n\x0c\n\x05\x05\0\x02\x06\x02\
-    \x12\x03\x20\x10\x14\n\x0b\n\x04\x05\0\x02\x07\x12\x03!\x04\x10\n\x0c\n\
-    \x05\x05\0\x02\x07\x01\x12\x03!\x04\x08\n\x0c\n\x05\x05\0\x02\x07\x02\
-    \x12\x03!\x0b\x0f\n\x0b\n\x04\x05\0\x02\x08\x12\x03\"\x04\x15\n\x0c\n\
-    \x05\x05\0\x02\x08\x01\x12\x03\"\x04\r\n\x0c\n\x05\x05\0\x02\x08\x02\x12\
-    \x03\"\x10\x14b\x06proto3\
+    roto\"\x86\x02\n\x07Request\x12\x0e\n\x02Id\x18\x01\x20\x01(\rR\x02Id\
+    \x123\n\x07Session\x18\x02\x20\x01(\x0b2\x19.message.core.UuidMessageR\
+    \x07Session\x127\n\tCharacter\x18\x03\x20\x01(\x0b2\x19.message.core.Uui\
+    dMessageR\tCharacter\x128\n\x08Movement\x18\x04\x20\x01(\x0e2\x1a.messag\
+    e.request.DirectionH\0R\x08Movement\x124\n\x06Facing\x18\x05\x20\x01(\
+    \x0e2\x1a.message.request.DirectionH\0R\x06FacingB\r\n\x0bRequestData*{\
+    \n\tDirection\x12\x08\n\x04None\x10\0\x12\t\n\x05North\x10\x01\x12\r\n\t\
+    NorthEast\x10\x03\x12\x08\n\x04East\x10\x02\x12\r\n\tSouthEast\x10\x06\
+    \x12\t\n\x05South\x10\x04\x12\r\n\tSouthWest\x10\x0c\x12\x08\n\x04West\
+    \x10\x08\x12\r\n\tNorthWest\x10\tB\x02H\x01J\xb9\x06\n\x06\x12\x04\0\0\
+    \x1b\x01\n\x08\n\x01\x0c\x12\x03\0\0\x12\n\x08\n\x01\x02\x12\x03\x01\0\
+    \x18\n\t\n\x02\x03\0\x12\x03\x03\0\x1c\n\x08\n\x01\x08\x12\x03\x05\0\x1c\
+    \n\t\n\x02\x08\t\x12\x03\x05\0\x1c\n\n\n\x02\x04\0\x12\x04\x07\0\x0f\x01\
+    \n\n\n\x03\x04\0\x01\x12\x03\x07\x08\x0f\n\x0b\n\x04\x04\0\x02\0\x12\x03\
+    \x08\x04\x12\n\r\n\x05\x04\0\x02\0\x04\x12\x04\x08\x04\x07\x11\n\x0c\n\
+    \x05\x04\0\x02\0\x05\x12\x03\x08\x04\n\n\x0c\n\x05\x04\0\x02\0\x01\x12\
+    \x03\x08\x0b\r\n\x0c\n\x05\x04\0\x02\0\x03\x12\x03\x08\x10\x11\n\x0b\n\
+    \x04\x04\0\x02\x01\x12\x03\t\x04!\n\r\n\x05\x04\0\x02\x01\x04\x12\x04\t\
+    \x04\x08\x12\n\x0c\n\x05\x04\0\x02\x01\x06\x12\x03\t\x04\x14\n\x0c\n\x05\
+    \x04\0\x02\x01\x01\x12\x03\t\x15\x1c\n\x0c\n\x05\x04\0\x02\x01\x03\x12\
+    \x03\t\x1f\x20\n\x0b\n\x04\x04\0\x02\x02\x12\x03\n\x04#\n\r\n\x05\x04\0\
+    \x02\x02\x04\x12\x04\n\x04\t!\n\x0c\n\x05\x04\0\x02\x02\x06\x12\x03\n\
+    \x04\x14\n\x0c\n\x05\x04\0\x02\x02\x01\x12\x03\n\x15\x1e\n\x0c\n\x05\x04\
+    \0\x02\x02\x03\x12\x03\n!\"\n\x0c\n\x04\x04\0\x08\0\x12\x04\x0b\x04\x0e\
+    \x05\n\x0c\n\x05\x04\0\x08\0\x01\x12\x03\x0b\n\x15\n\x0b\n\x04\x04\0\x02\
+    \x03\x12\x03\x0c\x08\x1f\n\x0c\n\x05\x04\0\x02\x03\x06\x12\x03\x0c\x08\
+    \x11\n\x0c\n\x05\x04\0\x02\x03\x01\x12\x03\x0c\x12\x1a\n\x0c\n\x05\x04\0\
+    \x02\x03\x03\x12\x03\x0c\x1d\x1e\n\x0b\n\x04\x04\0\x02\x04\x12\x03\r\x08\
+    \x1d\n\x0c\n\x05\x04\0\x02\x04\x06\x12\x03\r\x08\x11\n\x0c\n\x05\x04\0\
+    \x02\x04\x01\x12\x03\r\x12\x18\n\x0c\n\x05\x04\0\x02\x04\x03\x12\x03\r\
+    \x1b\x1c\n\n\n\x02\x05\0\x12\x04\x11\0\x1b\x01\n\n\n\x03\x05\0\x01\x12\
+    \x03\x11\x05\x0e\n\x0b\n\x04\x05\0\x02\0\x12\x03\x12\x04\x10\n\x0c\n\x05\
+    \x05\0\x02\0\x01\x12\x03\x12\x04\x08\n\x0c\n\x05\x05\0\x02\0\x02\x12\x03\
+    \x12\x0b\x0f\n\x0b\n\x04\x05\0\x02\x01\x12\x03\x13\x04\x11\n\x0c\n\x05\
+    \x05\0\x02\x01\x01\x12\x03\x13\x04\t\n\x0c\n\x05\x05\0\x02\x01\x02\x12\
+    \x03\x13\x0c\x10\n\x0b\n\x04\x05\0\x02\x02\x12\x03\x14\x04\x15\n\x0c\n\
+    \x05\x05\0\x02\x02\x01\x12\x03\x14\x04\r\n\x0c\n\x05\x05\0\x02\x02\x02\
+    \x12\x03\x14\x10\x14\n\x0b\n\x04\x05\0\x02\x03\x12\x03\x15\x04\x10\n\x0c\
+    \n\x05\x05\0\x02\x03\x01\x12\x03\x15\x04\x08\n\x0c\n\x05\x05\0\x02\x03\
+    \x02\x12\x03\x15\x0b\x0f\n\x0b\n\x04\x05\0\x02\x04\x12\x03\x16\x04\x15\n\
+    \x0c\n\x05\x05\0\x02\x04\x01\x12\x03\x16\x04\r\n\x0c\n\x05\x05\0\x02\x04\
+    \x02\x12\x03\x16\x10\x14\n\x0b\n\x04\x05\0\x02\x05\x12\x03\x17\x04\x11\n\
+    \x0c\n\x05\x05\0\x02\x05\x01\x12\x03\x17\x04\t\n\x0c\n\x05\x05\0\x02\x05\
+    \x02\x12\x03\x17\x0c\x10\n\x0b\n\x04\x05\0\x02\x06\x12\x03\x18\x04\x15\n\
+    \x0c\n\x05\x05\0\x02\x06\x01\x12\x03\x18\x04\r\n\x0c\n\x05\x05\0\x02\x06\
+    \x02\x12\x03\x18\x10\x14\n\x0b\n\x04\x05\0\x02\x07\x12\x03\x19\x04\x10\n\
+    \x0c\n\x05\x05\0\x02\x07\x01\x12\x03\x19\x04\x08\n\x0c\n\x05\x05\0\x02\
+    \x07\x02\x12\x03\x19\x0b\x0f\n\x0b\n\x04\x05\0\x02\x08\x12\x03\x1a\x04\
+    \x15\n\x0c\n\x05\x05\0\x02\x08\x01\x12\x03\x1a\x04\r\n\x0c\n\x05\x05\0\
+    \x02\x08\x02\x12\x03\x1a\x10\x14b\x06proto3\
 ";
 
 static mut file_descriptor_proto_lazy: ::protobuf::lazy::Lazy<::protobuf::descriptor::FileDescriptorProto> = ::protobuf::lazy::Lazy {
